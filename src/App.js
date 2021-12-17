@@ -2,6 +2,7 @@ import "./App.css";
 import Header from "./header";
 import Home from "./Home";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Checkout from "./checkout";
 function App() {
   return (
     <Router>
@@ -10,7 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/myzone" element={<Home />}></Route>
-          <Route path="/checkout" element={<h1>abc</h1>}></Route>
+          <Route path="/checkout" element={<Checkout />}></Route>
         </Routes>
       </div>
     </Router>
