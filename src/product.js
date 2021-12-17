@@ -1,20 +1,28 @@
 import React from "react";
 import "./product.css";
-function product() {
+
+function product({ title, image, price, rating }) {
   return (
     <div className="product">
       <div className="product_info">
-        <p>
-          Harry Potter Box Set: The Complete Collection (Set of 7 Volumes)
-          Paperback – Box set, 1 December 2014
-        </p>
+        <p className="product_description">{title}</p>
+
         <p className="product_price">
           <small>
-            ₹ <strong>2,990.00</strong>{" "}
+            ₹ <strong>{price}</strong>{" "}
           </small>
-          {/* time=1hr 8 min */}
         </p>
+
+        <div className="product_rating">
+          {Array(rating)
+            .fill()
+            .map((i) => (
+              <p>⭐</p>
+            ))}
+        </div>
       </div>
+      <img src={image} alt="" />
+      <button>Add to Cart</button>
     </div>
   );
 }
