@@ -2,6 +2,7 @@ import React from "react";
 import "./checkout.css";
 import imga from "./images/banner.png";
 import imga2 from "./images/purchase_protection.png";
+import Subtotal from "./subtotal";
 function checkout() {
   return (
     <div>
@@ -13,8 +14,7 @@ function checkout() {
         <div className="checkout_right">
           <img src={imga2} alt="" />
           <div className="checkout_right_text">
-            Subtotal
-            {/* continue from 1 hr 49 mins */}
+            <Subtotal />
           </div>
         </div>
       </div>
