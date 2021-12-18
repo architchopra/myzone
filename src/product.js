@@ -1,17 +1,43 @@
 import React from "react";
+import CurrencyFormat from "react-currency-format";
 import "./product.css";
+import { useStateValue } from "./Stateprovider";
 
-function product({ title, image, price, rating }) {
+function Product({ id, title, image, price, rating }) {
+  const [{ basket }, dispatch] = useStateValue();
+  console.log(basket);
+  const addToBasket = () => {
+    dispatch({
+      type: "ADD_TO_BASKET",
+      item: {
+        id: id,
+        title: title,
+        image: image,
+        price: price,
+        rating: rating,
+      },
+    });
+  };
   return (
     <div className="product">
       <div className="product_info">
         <p className="product_description">{title}</p>
-
-        <p className="product_price">
-          <small>
-            ₹ <strong>{price}</strong>{" "}
-          </small>
-        </p>
+        <CurrencyFormat
+          renderText={(value) => (
+            <>
+              <p className="product_price">
+                <small>
+                  <strong>{value}</strong>{" "}
+                </small>
+              </p>
+            </>
+          )}
+          decimalScale={2}
+          thousandSeparator={true}
+          value={price}
+          displayType={"text"}
+          prefix={"₹"}
+        />
 
         <div className="product_rating">
           {Array(rating)
@@ -22,9 +48,9 @@ function product({ title, image, price, rating }) {
         </div>
       </div>
       <img src={image} alt="" />
-      <button>Add to Cart</button>
+      <button onClick={addToBasket}>Add to Cart</button>
     </div>
   );
 }
 
-export default product;
+export default Product;

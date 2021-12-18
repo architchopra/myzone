@@ -4,7 +4,9 @@ import logo from "./images/logo.jpg";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Link } from "react-router-dom";
-function header() {
+import { useStateValue } from "./Stateprovider";
+function Header() {
+  const [{ basket }, dispatch] = useStateValue();
   return (
     <div className="header">
       <Link to="/">
@@ -37,7 +39,9 @@ function header() {
                 marginRight: "0.2em",
               }}
             />
-            <span className="header_option_l2 header_basketcount">0</span>
+            <span className="header_option_l2 header_basketcount">
+              {basket?.length}
+            </span>
           </div>
         </Link>
       </div>
@@ -45,4 +49,4 @@ function header() {
   );
 }
 
-export default header;
+export default Header;

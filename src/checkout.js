@@ -10,6 +10,7 @@ function checkout() {
       <div className="checkout">
         <div className="checkout_left">
           <div className="checkout_title">Shopping Cart</div>
+          {/* continue from 2 hrs 40 min */}
         </div>
         <div className="checkout_right">
           <img src={imga2} alt="" />

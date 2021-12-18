@@ -28,12 +28,15 @@
   margin-top: 0.7em;
 }
 .product > button {
-  background: #f0c14b;
-  border: 1px, solid;
-  margin-top: 1.2em;
-  border-color: #eace09;
-  color: black;
-  padding: 0.5em;
+  margin-top: 1em;
+  padding: 0.7em;
+  background-color: #ffd814;
+  box-shadow: 0 2px 5px 0 rgb(213 217 217 / 50%);
+  border: 2px solid #fcd200;
+  border-radius: 20px;
+  cursor: pointer;
+  color: #111;
+  margin-bottom: 0.2em;
 }
 /* .product_info {
   text-align: center;

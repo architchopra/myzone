@@ -17,6 +17,7 @@ function Home() {
 
       <div className="home_row">
         <Product
+          id={123}
           title="Harry Potter Box Set: The Complete
                 Collection (Set of 7 Volumes)   
                 Paperback – Box set, 1 December 
@@ -26,6 +27,7 @@ function Home() {
           rating={5}
         />
         <Product
+          id={124}
           title="2020 Apple MacBook Pro 
                 (13.3-inch/33.78 cm, Apple M1
                 chip with 8-core CPU and 
@@ -39,6 +41,7 @@ function Home() {
 
       <div className="home_row">
         <Product
+          id={234}
           title="Marshall 4090939 Mode Wired 
               in Ear Headphone with Mic 
              (Black/White)"
@@ -47,6 +50,7 @@ function Home() {
           rating={4}
         />
         <Product
+          id={235}
           title="Fossil Minimalist Analog
                  Black Dial Men's 
                  Watch-FS5848"
@@ -55,6 +59,7 @@ function Home() {
           rating={3}
         />
         <Product
+          id={236}
           title="New Apple iPhone 12 Pro 
                 (256GB) - Pacific Blue"
           price={102900.0}
@@ -65,6 +70,7 @@ function Home() {
 
       <div className="home_row">
         <Product
+          id={345}
           title="Samsung LC49RG90SSUXEN 49' 
                  Curved LED Gaming Monitor 
                  - Super Ultra Wide Dual 
