@@ -51,3 +51,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.product_description:hover {
+  overflow: visible;
+  width: 98;
+}
