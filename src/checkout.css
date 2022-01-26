@@ -11,6 +11,11 @@
   width: 72%;
   background-color: white;
 }
+.checkout_left > h3 {
+  margin-top: 2rem;
+  margin-left: 1.5rem;
+  font-weight: 500;
+}
 .checkout_right {
   width: 25%;
 

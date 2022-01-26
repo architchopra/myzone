@@ -1,0 +1,75 @@
+.login_logo {
+  height: 3rem;
+  width: 10rem;
+  margin: 0 0.7rem;
+  margin-top: 0.5rem;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  mask-image: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.3));
+  mask-image: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.3));
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.3));
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1em;
+}
+.login {
+  display: flex;
+  height: 90vh;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+}
+.login_container {
+  width: 12rem;
+  display: flex !important;
+  flex-direction: column;
+  height: fit-content;
+  border-radius: 1rem;
+  border: 1px solid lightgray;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 1rem;
+  padding-top: 0.5rem;
+}
+.login_container > h2 {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+.login_container > form > h5 {
+  margin-bottom: 0.2rem;
+  font-weight: 400;
+}
+.login_container > form > input {
+  margin-bottom: 0.3rem;
+  width: 98%;
+  height: 1.2rem;
+  background-color: white;
+}
+.login_container > p {
+  margin-top: 0.6rem;
+  font-size: 0.5rem;
+}
+.login_registerButton {
+  margin-top: 1em;
+  padding: 0.5em;
+
+  box-shadow: 0 2px 5px 0 rgb(213 217 217 / 50%);
+  border: 2px solid darkgrey;
+  font-size: x-small;
+  cursor: pointer;
+  color: #111;
+}
+.login_signinButton {
+  margin-top: 0.7em;
+  padding: 0.3em;
+  background-color: #ffd814;
+  box-shadow: 0 2px 5px 0 rgb(213 217 217 / 50%);
+  border: 2px solid #fcd200;
+  border-radius: 20px;
+  cursor: pointer;
+  color: #111;
+
+  width: 100%;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
