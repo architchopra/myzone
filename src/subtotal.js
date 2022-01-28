@@ -1,9 +1,13 @@
 import React from "react";
 import CurrencyFormat from "react-currency-format";
+import { useNavigate } from "react-router-dom";
 import { getBasketTotal } from "./reducer";
 import { useStateValue } from "./Stateprovider";
+
 import "./subtotal.css";
 function Subtotal() {
+  const navigate = useNavigate();
+
   const [{ basket }, dispatch] = useStateValue();
   return (
     <div className="subtotal">
@@ -26,7 +30,7 @@ function Subtotal() {
         displayType={"text"}
         prefix={"₹"}
       />
-      <button>Proceed to Buy</button>
+      <button onClick={(e) => navigate("/payment")}>Proceed to Buy</button>
     </div>
   );
 }

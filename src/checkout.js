@@ -4,9 +4,12 @@ import CheckoutProduct from "./CheckoutProduct";
 import Header from "./header";
 import imga from "./images/banner.png";
 import imga2 from "./images/purchase_protection.png";
+import { useNavigate } from "react-router-dom";
 import { useStateValue } from "./Stateprovider";
 import Subtotal from "./subtotal";
 function Checkout() {
+  const navigate = useNavigate();
+
   const [{ basket, user }, dispatch] = useStateValue();
   var s = user?.email;
   s = s?.substring(0, s.indexOf("@"));
@@ -21,7 +24,7 @@ function Checkout() {
         <div className="checkout_left">
           <h3>Hello {s},</h3>
           <div className="checkout_title">Your Shopping Cart</div>
-          {/* resume from 3 hrs 20 min */}
+
           {basket.map((item) => (
             <CheckoutProduct
               id={item.id}
