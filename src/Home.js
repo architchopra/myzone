@@ -24,11 +24,32 @@ function Home() {
             title="Harry Potter Box Set: The Complete
                 Collection (Set of 7 Volumes)   
                 Paperback – Box set, 1 December 
-                2014"
+                2014 "
             price={2990.0}
             image={imgaharry}
             rating={5}
           />
+          <Product
+            id={235}
+            title="Fossil Minimalist Analog
+                 Black Dial Men's 
+                 Watch-FS5848"
+            price={12495.0}
+            image={imgawatch}
+            rating={3}
+          />
+          <Product
+            id={234}
+            title="Marshall 4090939 Mode Wired 
+              in Ear Headphone with Mic 
+             (Black/White)"
+            price={2745.0}
+            image={imgaearphones}
+            rating={4}
+          />
+        </div>
+
+        <div className="home_row">
           <Product
             id={124}
             title="2020 Apple MacBook Pro 
@@ -40,27 +61,7 @@ function Home() {
             image={imgamac}
             rating={4}
           />
-        </div>
 
-        <div className="home_row">
-          <Product
-            id={234}
-            title="Marshall 4090939 Mode Wired 
-              in Ear Headphone with Mic 
-             (Black/White)"
-            price={2745.0}
-            image={imgaearphones}
-            rating={4}
-          />
-          <Product
-            id={235}
-            title="Fossil Minimalist Analog
-                 Black Dial Men's 
-                 Watch-FS5848"
-            price={12495.0}
-            image={imgawatch}
-            rating={3}
-          />
           <Product
             id={236}
             title="New Apple iPhone 12 Pro 
