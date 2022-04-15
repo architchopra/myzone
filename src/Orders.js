@@ -6,6 +6,7 @@ import CurrencyFormat from "react-currency-format";
 import { useStateValue } from "./Stateprovider";
 import { getBasketTotal } from "./reducer";
 import { useNavigate } from "react-router-dom";
+import Prod from "./Prod";
 
 function Order() {
   useEffect(() => {
@@ -25,7 +26,7 @@ function Order() {
         <small>{basket.id}</small>
       </p>
       {basket?.map((item) => (
-        <CheckoutProduct
+        <Prod
           id={item.id}
           title={item.title}
           image={item.image}

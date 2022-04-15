@@ -1,0 +1,25 @@
+.checkoutProduct {
+    display: flex;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .checkoutProduct_image {
+    padding-left: 0.4em;
+    width: 10rem;
+    height: 10rem;
+    object-fit: contain;
+  }
+  .checkoutProduct_info {
+    padding-left: 2.2rem;
+    padding-right: 1rem;
+  }
+  .checkoutProduct_rating {
+    display: flex;
+    margin-top: 1rem;
+  }
+ 
+  .checkoutProduct_title {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  
