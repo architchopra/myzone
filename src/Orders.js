@@ -7,6 +7,7 @@ import { useStateValue } from "./Stateprovider";
 import { getBasketTotal } from "./reducer";
 import { useNavigate } from "react-router-dom";
 import Prod from "./Prod";
+import Header from "./header";
 
 function Order() {
   useEffect(() => {
@@ -18,9 +19,15 @@ function Order() {
     navigate("/");
   };
   const [{ basket, user }, dispatch] = useStateValue();
+
+  var s = user?.email;
+  s = s?.substring(0, s.indexOf("@"));
   return (
     <div className="order">
-      <h2>Orders</h2>
+      <h1 className="heading_one">
+        Congratulations your payment was successful!!!!!!!!!!!
+      </h1>
+      <h2 className="heading_two">Your Orders {s},</h2>
 
       <p className="order__id">
         <small>{basket.id}</small>
