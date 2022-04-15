@@ -1,5 +1,5 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import axios from "axios";
+import axios from "./axios";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import CurrencyFormat from "react-currency-format";
@@ -9,6 +9,14 @@ import Header from "./header";
 import "./Payment.css";
 import { getBasketTotal } from "./reducer";
 import { useStateValue } from "./Stateprovider";
+import { db } from "./firebase";
+import {
+  collection,
+  query,
+  getDocs,
+  setDoc,
+  doc,
+} from "firebase/firestore";
 function Payment() {
   const [{ basket, user }, dispatch] = useStateValue();
   const stripe = useStripe();
@@ -18,32 +26,79 @@ function Payment() {
   const [processing, setProcessing] = useState("");
   const [error, setError] = useState(null);
   const [disabled, setDisabled] = useState(true);
-  const [clientSecret, setclientSecret] = useState(true);
+  const [clientSecret, setClientSecret] = useState(true);
+  const [res, setRes] = useState(true);
+
   useEffect(() => {
     const getClientSecret = async () => {
       const response = await axios({
         method: "post",
         url: `/payments/create?total=${getBasketTotal(basket) * 100}`,
       });
-      setclientSecret(response.data.clientSecret)
+
+      setClientSecret(response.data.clientSecret);
+      setRes(response.data);
     };
     getClientSecret();
   }, [basket]);
 
+  console.log("client secrety", clientSecret, res);
+  console.log("p", user);
   const handleSubmit = async (e) => {
     e.preventDefault();
     setProcessing(true);
-   const payload =await stripe.confirmCardPayment(clientSecret,{
-    payment_method: {
-      card: elements.getElement(CardElement)
-     
-   }
-  }).then(({paymentIntent})=>{
-    setSucceeded(true);
-    setError(null);
-    setProcessing(false);
-    navigate("/");
-  })
+    const payload = await stripe
+      .confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: elements.getElement(CardElement),
+        },
+      })
+      .then(async ({ paymentIntent }) => {
+        // const ref = db.collection("users").doc(user?.uid);
+        // ref.doc(paymentIntent.id).set({
+        //   basket: basket,
+        //   amount: paymentIntent.amount,
+        //   created: paymentIntent.created,
+        // });
+
+        const q = query(collection(db, "users"));
+        const querySnapshot = await getDocs(q);
+        const querydata = querySnapshot.docs.map((user) => ({
+          ...user.data(),
+          id: user?.uid,
+        }));
+        console.log(querydata);
+        querydata.map(async (paymentIntent) => {
+          await setDoc(doc(db, `users/${paymentIntent.id}/orders`, user?.uid), {
+            basket: basket,
+            amount: paymentIntent.amount,
+            created: paymentIntent.created,
+          });
+        });
+
+        // const newuserRef = doc(
+        //   collection(db, "users", user?.uid, "orders", paymentIntent.id)
+        // );
+
+        // const data = {
+        //   basket: basket,
+        //   amount: paymentIntent.amount,
+        //   created: paymentIntent.created,
+        // };
+
+        // await setDoc(newuserRef, data);
+
+        // const res = await db.collection("users").doc(user?.uid);
+        // const res2 = res.collection("orders").doc(paymentIntent.id);
+
+        setSucceeded(true);
+        setError(null);
+        setProcessing(false);
+        navigate("/orders");
+        //   dispatch({
+        //     type: "EMPTY_BASKET",
+        //   });
+      });
   };
   const handleChange = (e) => {
     setDisabled(e.empty);
@@ -54,7 +109,11 @@ function Payment() {
       <Header />
       <div className="payment_conatiner">
         <h1>
-          Checkout(<Link to="/checkout">{basket?.length}items</Link>)
+          Checkout(
+          <Link to="/checkout" className="number">
+            {basket?.length}items
+          </Link>
+          )
         </h1>
         <div className="payment_section">
           <div className="payment_title">
@@ -63,9 +122,9 @@ function Payment() {
           <div className="space"></div>
           <div className="payment_adress">
             <p>{user?.email}</p>
-            <p>59,Gagan Colony near Celebration Mall</p>
-            <p>Batala Road Amritsar</p>
-            <p>Punjab,India pin-143001</p>
+            <p>Jaypee institute of information technology</p>
+            <p>Noida sec-62</p>
+            <p>Uttar Pradesh,India pin-143001</p>
           </div>
         </div>
         <div className="payment_section">
@@ -91,13 +150,13 @@ function Payment() {
           </div>
 
           <div className="payment_details">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="frm">
               <CardElement onChange={handleChange} />
               <div className="payment_subtotal">
                 <CurrencyFormat
                   renderText={(value) => (
                     <>
-                      <h3>
+                      <h3 className="hed">
                         Order Total ({basket.length} item):
                         <strong>{value}</strong>
                       </h3>
@@ -109,7 +168,10 @@ function Payment() {
                   displayType={"text"}
                   prefix={"₹"}
                 />
-                <button disabled={processing || succeeded || disabled}>
+                <button
+                  className="btn"
+                  disabled={processing || succeeded || disabled}
+                >
                   <span>{processing ? <p>Processing</p> : "Buy Now"}</span>
                 </button>
               </div>
